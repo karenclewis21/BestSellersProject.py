@@ -21,6 +21,16 @@ class Book:
         self.genre = book_data_dictionary["genre"]
 
     
-        
-      
+       
+    most_appearances= []
+    name_and_frequency = {"name": '', "frequency": 0}
+    book_names = set([book.name for book in book_list])
+    for name in book_names:
+        unique_names = list(filter(lambda book : book.name == name, book_list))
+        unique_name_count = len(unique_names)
 
+        if unique_name_count >= name_and_frequency["frequency"]:
+            name_and_frequency["name"] = name 
+            name_and_frequency["frequency"] = unique_name_count
+
+    print(name_and_frequency)
